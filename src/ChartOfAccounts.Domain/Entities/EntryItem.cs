@@ -4,5 +4,6 @@ namespace ChartOfAccounts.Domain.Entities
 {
     public class EntryItem : Entity
     {
+
     }
 }
