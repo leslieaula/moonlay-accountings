@@ -12,6 +12,6 @@ namespace ChartOfAccounts.Application
 
         Task<Entry> RetrieveEntryAsync(string number);
 
-        Task ApplyAsync(Entry entry);
+        Task Save(Entry entry);
     }
 }

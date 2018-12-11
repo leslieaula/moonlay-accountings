@@ -82,7 +82,7 @@ namespace ChartOfAccounts.Tests.Application
             entry.AddItem(new EntryItem());
 
 
-            await unitUnderTest.ApplyAsync(entry);
+            await unitUnderTest.Save(entry);
 
             // Assert
             Assert.True(false);

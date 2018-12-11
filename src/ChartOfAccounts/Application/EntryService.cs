@@ -1,6 +1,5 @@
 ﻿using ChartOfAccounts.Domain;
 using ChartOfAccounts.Domain.Entities;
-using ChartOfAccounts.Infrastructure.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -17,17 +16,20 @@ namespace ChartOfAccounts.Application
 
         }
 
-        public async Task ApplyAsync(Entry entry)
+        public async Task Save(Entry entry)
         {
-
             _entryRepository.Update(entry);
 
             await _entryRepository.UnitOfWork.SaveChangesAsync();
         }
 
-        public Task<Entry> PostEntryAsync(string number, DateTimeOffset date, List<EntryItem> items)
+        public async Task<Entry> PostEntryAsync(string number, DateTimeOffset date, List<EntryItem> items)
         {
-            throw new NotImplementedException();
+            var entry = new Entry(Guid.NewGuid(), number, date, items);
+
+            await this.Save(entry);
+
+            return entry;
         }
 
         public Task<Entry> RetrieveEntryAsync(string number)

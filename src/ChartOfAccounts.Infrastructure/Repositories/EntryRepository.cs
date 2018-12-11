@@ -23,7 +23,8 @@ namespace ChartOfAccounts.Infrastructure.Repositories
             readModel.Number = entry.Number;
             readModel.Date = entry.Date;
             readModel.ModifiedBy = _workContext.CurrentUser;
-            
+
+            this.dbSet.Update(readModel);
         }
     }
 }
